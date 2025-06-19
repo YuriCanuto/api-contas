@@ -1,8 +1,14 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\CadastroUsuarioController;
+use App\Http\Controllers\Auth\LoginUsuarioController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::prefix('v1')->group(function () {
+    Route::post('/registrar', CadastroUsuarioController::class);
+    Route::get('/login', LoginUsuarioController::class);
+
+    Route::middleware(['auth:sanctum'])->group(function () {
+        //
+    });
+});
