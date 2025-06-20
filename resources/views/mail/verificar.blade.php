@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
+<x-mail::message>
+# Email de verificação
 
-<head>
-    <title>Verify Your Email</title>
-</head>
+<h2>Bem vindo, {{ $usuario }}</h2>
 
-<body>
-    <h2>Welcome, {{ $usuario }}</h2>
-    <p>Click the button below to verify your email address:</p>
-    <a href="{{ $urlVerificacao }}" style="background-color: #3490dc; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Verify Email</a>
-    <p>If you did not register, no further action is required.</p>
-</body>
+<p>Clique no botão abaixo para verificar seu endereço de e-mail:</p>
 
-</html>
+<x-mail::button :url="$urlVerificacao" color="success">
+Verificar Email
+</x-mail::button>
+
+Obrigado,<br>
+{{ config('app.name') }}
+</x-mail::message>

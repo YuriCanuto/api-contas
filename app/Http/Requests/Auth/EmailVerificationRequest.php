@@ -9,7 +9,6 @@ class EmailVerificationRequest extends BaseEmailVerificationRequest
 {
     public function authorize()
     {
-        dd('opa!');
         $user = User::query()->findOrFail($this->route('id'));
 
         if (! hash_equals((string) $this->route('hash'),

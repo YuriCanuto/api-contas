@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VerificacaoEmail extends Mailable
+class BoasVindasEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,7 @@ class VerificacaoEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Verificacao Email',
+            subject: 'Seja Bem Vindo',
         );
     }
 
@@ -39,10 +39,9 @@ class VerificacaoEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.verificar',
+            markdown: 'mail.boas_vindas',
             with: [
                 'usuario' => $this->user->name,
-                'urlVerificacao' => url('/email/verify/' . $this->user->id . '/' . sha1($this->user->email))
             ]
         );
     }
