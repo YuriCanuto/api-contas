@@ -14,7 +14,7 @@ Route::prefix('v1')->group(function () {
         // VERIFICAR EMAIL
         Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
             $request->fulfill();
-            return response()->json(['message' => 'Email verified successfully.']);
+            return response()->json(['message' => 'Email verificado com sucesso.']);
         }); // ->middleware('verified')
 
     });
