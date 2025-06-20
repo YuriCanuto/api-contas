@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 
 trait Uuid
 {
+    /** @return void */
     protected static function boot()
     {
         parent::boot();
@@ -14,11 +15,13 @@ trait Uuid
         });
     }
 
+    /** @return bool */
     public function getIncrementing(): bool
     {
         return false;
     }
 
+    /** @return string */
     public function getKeyType(): string
     {
         return 'string';

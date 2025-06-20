@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\DTO\Usuario\CadastroUsuarioDTO;
+use App\Events\UsuarioRegistradoEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CadastroUsuarioRequest;
 use App\Repositories\Interfaces\IUserInterface;
@@ -21,6 +22,8 @@ class CadastroUsuarioController extends Controller
             $cadastroUsuarioDTO->from($request)->all();
 
             $user = $userRepository->create($cadastroUsuarioDTO);
+
+            UsuarioRegistradoEvent::dispatch($user);
 
             return response()->json(['message' => 'Usuário registrado com sucesso!', 'usuario' => $user], Response::HTTP_OK);
 
